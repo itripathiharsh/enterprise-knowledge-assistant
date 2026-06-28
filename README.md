@@ -8,7 +8,7 @@ An intelligent, full-stack RAG (Retrieval-Augmented Generation) application desi
 *   **Advanced RAG Pipeline:** Utilizes Hybrid Search (dense + sparse) combined with a Cross-Encoder Re-ranker to guarantee highly relevant context retrieval.
 *   **Streaming Responses:** Real-time answer generation using Server-Sent Events (SSE) with "thinking" indicators for better user experience.
 *   **Source Citations:** Every answer includes exact source citations and document previews so users can verify the information.
-*   **Automated Evaluation (RAGAS):** A built-in synthetic evaluation dashboard that auto-generates test questions and grades the RAG engine's Semantic Similarity and Source Attribution Accuracy.
+*   **Automated Evaluation (RAGAS):** A built-in synthetic evaluation dashboard that auto-generated test questions and grades the RAG engine's Semantic Similarity and Source Attribution Accuracy.
 *   **User Isolation:** JWT-based authentication ensures that users can only search, view, and interact with the documents they have personally uploaded.
 *   **Resilient AI:** Primary LLM inference powered by Groq (Llama 3), with a seamless fallback to Google Gemini to bypass rate limits without user interruption.
 
