@@ -1,0 +1,32 @@
+[
+  {
+    "id": "TC001",
+    "question": "What is the employee leave policy?",
+    "expected_answer": "Employees are eligible for 24 paid leaves annually.",
+    "expected_source": "HR_Policy"
+  },
+  {
+    "id": "TC002",
+    "question": "What is the refund policy for customers?",
+    "expected_answer": "Refunds are allowed within 30 days of purchase.",
+    "expected_source": "Customer_Policy"
+  },
+  {
+    "id": "TC003",
+    "question": "What is the notice period for resignation?",
+    "expected_answer": "The standard notice period is 30 days.",
+    "expected_source": "HR_Policy"
+  },
+  {
+    "id": "TC004",
+    "question": "What information is not in any document?",
+    "expected_answer": "I could not find information about this",
+    "expected_source": ""
+  },
+  {
+    "id": "TC005",
+    "question": "What are the data privacy requirements?",
+    "expected_answer": "All customer data must be handled per GDPR guidelines.",
+    "expected_source": "Compliance"
+  }
+]
