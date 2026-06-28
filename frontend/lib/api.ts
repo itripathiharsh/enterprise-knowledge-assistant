@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_BASE_URL } from "./constants";
 import { DocumentInfo, StatsData, Source, ChunkResult } from "./types";
 
-const api = axios.create({ baseURL: API_BASE_URL });
+export const api = axios.create({ baseURL: API_BASE_URL });
 
 api.interceptors.request.use((config) => {
   if (typeof window !== "undefined") {
@@ -31,8 +31,11 @@ api.interceptors.response.use(
 // ── Documents ─────────────────────────────────────────────────────
 
 export async function uploadDocument(file: File): Promise<{
-  doc_id: string; doc_name: string; total_pages: number;
-  total_chunks: number; message: string;
+  doc_id: string;
+  doc_name: string;
+  total_pages: number;
+  total_chunks: number;
+  message: string;
 }> {
   const form = new FormData();
   form.append("file", file);
@@ -43,12 +46,12 @@ export async function uploadDocument(file: File): Promise<{
 }
 
 export async function uploadBatch(files: File[]): Promise<any> {
-    const form = new FormData();
-    files.forEach(f => form.append("files", f));
-    const { data } = await api.post("/documents/upload-batch", form, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
-    return data;
+  const form = new FormData();
+  files.forEach((f) => form.append("files", f));
+  const { data } = await api.post("/documents/upload-batch", form, {
+    headers: { "Content-Type": "multipart/form-data" }
+  });
+  return data;
 }
 
 export async function listDocuments(): Promise<DocumentInfo[]> {
@@ -68,17 +71,25 @@ export async function summarizeDocument(docId: string): Promise<string> {
 // ── Query ─────────────────────────────────────────────────────────
 
 export async function askQuestion(params: {
-  question: string; session_id: string; doc_filter?: string[];
+  question: string;
+  session_id: string;
+  doc_filter?: string[];
 }): Promise<{
-  answer: string; sources: Source[]; chunks: ChunkResult[];
-  confidence: number; follow_up_questions: string[];
+  answer: string;
+  sources: Source[];
+  chunks: ChunkResult[];
+  confidence: number;
+  follow_up_questions: string[];
 }> {
   const { data } = await api.post("/ask", params);
   return data;
 }
 
 export async function submitFeedback(params: {
-  session_id: string; question: string; answer: string; feedback: string;
+  session_id: string;
+  question: string;
+  answer: string;
+  feedback: string;
 }): Promise<void> {
   await api.post("/feedback", params);
 }
@@ -100,7 +111,9 @@ export async function getLastEvaluation(): Promise<any> {
   return data;
 }
 
-export async function getChatHistory(): Promise<{ role: string, content: string }[]> {
+export async function getChatHistory(): Promise<
+  { role: string; content: string }[]
+> {
   const { data } = await api.get(`/query/history?t=${Date.now()}`);
   return data.history;
 }
